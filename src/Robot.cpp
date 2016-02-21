@@ -80,6 +80,7 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("climber encoder", RobotMap::climberHookEncoder->GetRaw());
 	SmartDashboard::PutNumber("left encoder", RobotMap::drivetrainLeftEncoder->GetDistance());
 	SmartDashboard::PutNumber("right encoder", RobotMap::drivetrainRightEncoder->GetDistance());
+	SmartDashboard::PutBoolean("Ball in", RobotMap::shooterPhotoeye->Get());
 }
 
 void Robot::TestPeriodic() {

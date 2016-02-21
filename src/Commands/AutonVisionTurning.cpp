@@ -4,6 +4,7 @@ AutonVisionTurning::AutonVisionTurning()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	SetTimeout(4.0);
 }
 
 // Called just before this Command runs the first time
@@ -28,7 +29,7 @@ void AutonVisionTurning::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool AutonVisionTurning::IsFinished()
 {
-	if((target.HasValue() == false) || ((target.GetValue() > LOWER_LIMIT) && (target.GetValue() < UPPER_LIMIT))) {
+	if((target.HasValue() == false) || ((target.GetValue() > LOWER_LIMIT) && (target.GetValue() < UPPER_LIMIT)) || (IsTimedOut())) {
 		return true;
 	}else{
 		return false;
