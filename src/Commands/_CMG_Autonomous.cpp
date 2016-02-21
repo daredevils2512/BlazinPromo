@@ -10,7 +10,7 @@
 
 
 
-#include "Commands/WaitCommand.h"
+#include "Commands/PauseCommand.h"
 #include "_CMG_Autonomous.h"
 #include "Commands/IntakeActuate.h"
 #include "Commands/AutonDrive.h"
@@ -48,6 +48,6 @@ _CMG_Autonomous::_CMG_Autonomous() {
         //AddSequential(new AutonVisionTurning());
         AddSequential(new AutonDrive(7.0, 0.8, 0.0, true));
         AddSequential(new _CMG_ShooterCharge());
-        AddSequential(new WaitCommand(1.0));
+        AddSequential(new PauseCommand(1.0));
         AddSequential(new _CMG_ShootBall());
  }

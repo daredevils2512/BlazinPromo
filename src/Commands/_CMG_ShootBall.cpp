@@ -10,7 +10,7 @@
 
 
 
-#include "Commands/WaitCommand.h"
+#include "Commands/PauseCommand.h"
 #include "_CMG_ShootBall.h"
 #include "Commands/ShooterActuate.h"
 #include "Commands/ShooterSpeed.h"
@@ -37,7 +37,7 @@ _CMG_ShootBall::_CMG_ShootBall() {
     // a CommandGroup containing them would require both the chassis and the
     // arm.
 		AddSequential(new ShooterActuate(false));
-        AddSequential(new WaitCommand(0.5));
+        AddSequential(new PauseCommand(0.5));
         AddSequential(new ShooterSpeed(0.0, false));
 
  }
