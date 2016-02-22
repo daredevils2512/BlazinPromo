@@ -9,6 +9,7 @@ class OI
 private:
 	Joystick driverController{0};
 	Joystick coDriverController{1};
+	Joystick autonomousChooser{2};
 	TriggerButton DRC_rightTrigger{&driverController, 3, 0.8};
 	TriggerButton DRC_leftTrigger{&driverController, 2, 0.8};
 	JoystickButton DRC_rightBumper{&driverController, 6};
@@ -36,6 +37,7 @@ public:
 	double Desensitize(double value);
 	double GetThrottle();
 	bool InvertDriving();
+	int GetAutonomous();
 };
 
 #endif
