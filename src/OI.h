@@ -37,7 +37,6 @@ public:
 	double Desensitize(double value);
 	double GetThrottle();
 	bool InvertDriving();
-	int GetAutonomous();
 };
 
 #endif

@@ -64,16 +64,3 @@ bool OI::InvertDriving() {
 	}
 }
 
-int OI::GetAutonomous() {
-	if(autonomousChooser.GetRawButton(1)) {
-		return 1;
-	}else if(autonomousChooser.GetRawButton(2)){
-		return 2;
-	}else if(autonomousChooser.GetRawButton(3)) {
-		return 3;
-	}else if(autonomousChooser.GetRawButton(4)) {
-		return 4;
-	}else {
-		return 0;
-	}
-}
