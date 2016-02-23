@@ -44,7 +44,7 @@ _CMG_Autonomous::_CMG_Autonomous() {
         AddSequential(new AutonDrive(7.0, -0.4, 0.0, false));
         AddSequential(new AutonDrive(5.5, -0.8, 0.0, true));
         AddSequential(new PauseCommand(0.2));
-        AddSequential(new AutonDrive(4.3, 0.0, 0.8, true));
+        AddSequential(new AutonDrive(2.9, 0.0, 0.8, true));
         //AddSequential(new PauseCommand(0.5);
         //AddSequential(new AutonVisionTurning());
         AddSequential(new AutonDrive(6.5, 0.8, 0.0, true));
