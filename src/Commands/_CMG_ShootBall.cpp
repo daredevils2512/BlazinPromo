@@ -38,6 +38,7 @@ _CMG_ShootBall::_CMG_ShootBall() {
     // arm.
 		AddSequential(new ShooterActuate(false));
         AddSequential(new PauseCommand(0.5));
+        SmartDashboard::PutBoolean("Shooter Ready", false);
         AddSequential(new ShooterSpeed(0.0, false));
 
  }
