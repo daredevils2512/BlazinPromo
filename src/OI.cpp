@@ -8,6 +8,7 @@
 #include "Commands/ShooterActuate.h"
 #include "Commands/ShooterSpeed.h"
 #include "Commands/ClimbHookSpeed.h"
+#include "Commands/DrivetrainTenPercent.h"
 
 OI::OI()
 {
@@ -16,6 +17,7 @@ OI::OI()
 	DRC_rightBumper.WhenPressed(new IntakeActuate(true));
 	DRC_leftBumper.WhenPressed(new IntakeActuate(false));
 	DRC_a_Button.WhenPressed(new IntakeSpeed(0.0));
+	DRC_b_Button.WhileHeld(new DrivetrainTenPercent());
 
 	CDR_trigger.WhenPressed(new _CMG_ShootBall());
 	CDR_sideJoystickButton.WhenPressed(new _CMG_ShooterCharge());

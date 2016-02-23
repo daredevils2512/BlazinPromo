@@ -13,8 +13,8 @@ private:
 	TriggerButton DRC_leftTrigger{&driverController, 2, 0.8};
 	JoystickButton DRC_rightBumper{&driverController, 6};
 	JoystickButton DRC_leftBumper{&driverController, 5};
-	//JoystickButton DRC_ejectBall{&driverController, 3};
 	JoystickButton DRC_a_Button{&driverController, 1};
+	JoystickButton DRC_b_Button{&driverController, 2};
 
 	JoystickButton CDR_trigger{&coDriverController, 1};
 	JoystickButton CDR_sideJoystickButton{&coDriverController, 2};
