@@ -8,6 +8,7 @@
 #include "Commands/ShooterActuate.h"
 #include "Commands/ShooterSpeed.h"
 #include "Commands/ClimbHookSpeed.h"
+#include "Commands/ShooterManualSpeed.h"
 
 OI::OI()
 {
@@ -20,7 +21,7 @@ OI::OI()
 	CDR_trigger.WhenPressed(new _CMG_ShootBall());
 	CDR_sideJoystickButton.WhenPressed(new _CMG_ShooterCharge());
 	CDR_bottomLeftJoystick.WhileHeld(new ShooterSpeed(0.0, false));
-	CDR_topLeftJoystick.WhileHeld(new ShooterSpeed(GetThrottle(), false));
+	CDR_topLeftJoystick.WhileHeld(new ShooterManualSpeed());
 	CDR_bottomRightJoystick.WhenPressed(new ShooterActuate(false));
 	CDR_topRightJoystick.WhenPressed(new ShooterActuate(true));
 	CDR_bottomLeftBase.WhileHeld(new ClimbWinchSpeed(-1.0));
