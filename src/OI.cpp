@@ -8,6 +8,7 @@
 #include "Commands/ShooterActuate.h"
 #include "Commands/ShooterSpeed.h"
 #include "Commands/ClimbHookSpeed.h"
+#include "Commands/IntakeManualSpeed.h"
 
 OI::OI()
 {
@@ -31,6 +32,8 @@ OI::OI()
 	CDR_topMiddleBase.WhileHeld(new ClimbHookSpeed(0.5));
 	CDR_bottomRightBase.WhenPressed(new IntakeActuate(false));
 	CDR_topRightBase.WhenPressed(new IntakeActuate(true));
+	CDR_joystickPOV.WhileHeld(new IntakeManualSpeed());
+
 }
 
 double OI::GetDriveMove() {
@@ -60,6 +63,14 @@ bool OI::InvertDriving() {
 		return true;
 	}else{
 		driverController.SetRumble(Joystick::kRightRumble, 0.0);
+		return false;
+	}
+}
+
+bool OI::POVForward() {
+	if((coDriverController.GetPOV(3) >= 270) || (coDriverController.GetPOV(3) <= 90)) {
+		return true;
+	}else{
 		return false;
 	}
 }
