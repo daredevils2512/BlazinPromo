@@ -18,8 +18,8 @@ public:
 
 private:
 	Nullable<double> target;
-	static const int UPPER_LIMIT = 127;
-	static const int LOWER_LIMIT = 123;
+	static const int UPPER_LIMIT = 136;
+	static const int LOWER_LIMIT = 130;
 };
 
 #endif
