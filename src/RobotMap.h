@@ -37,6 +37,8 @@ public:
 	static std::shared_ptr<CANTalon> climberLeftWinchMotor;
 	static std::shared_ptr<CANTalon> climberRightWinchMotor;
 	static std::shared_ptr<Encoder> climberHookEncoder;
+	static std::shared_ptr<Relay> compressorSpike;
+	static std::shared_ptr<DigitalInput> compressorPressureSwitch;
 
 	static void init();
 };
