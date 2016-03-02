@@ -10,7 +10,8 @@
 #include "Commands/ClimbHookSpeed.h"
 #include "Commands/ShooterManualSpeed.h"
 #include "Commands/IntakeManualSpeed.h"
-#include "Commands/DrivetrainTenPercent.h"OI::OI()
+#include "Commands/DrivetrainTenPercent.h"
+OI::OI()
 {
 	// Process operator interface input here.
 	DRC_rightTrigger.WhenPressed(new _CMG_IntakeBall()); //intake ball
