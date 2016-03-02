@@ -3,6 +3,7 @@
 
 #include "WPILib.h"
 #include "TriggerButton.h"
+#include "POVButton.h"
 
 class OI
 {
@@ -30,6 +31,7 @@ private:
 	JoystickButton CDR_topMiddleBase{&coDriverController, 10};
 	JoystickButton CDR_bottomRightBase{&coDriverController, 11};
 	JoystickButton CDR_topRightBase{&coDriverController, 12};
+	POVButton CDR_joystickPOV{&coDriverController, 3};
 
 public:
 	OI();
@@ -38,6 +40,7 @@ public:
 	double Desensitize(double value);
 	double GetThrottle();
 	bool InvertDriving();
+	bool POVForward();
 };
 
 #endif

@@ -8,8 +8,7 @@
 #include "Commands/ShooterActuate.h"
 #include "Commands/ShooterSpeed.h"
 #include "Commands/ClimbHookSpeed.h"
-#include "Commands/ShooterManualSpeed.h"
-
+#include "Commands/ShooterManualSpeed.h"#include "Commands/IntakeManualSpeed.h"
 OI::OI()
 {
 	// Process operator interface input here.
@@ -31,7 +30,7 @@ OI::OI()
 	CDR_bottomMiddleBase.WhileHeld(new ClimbHookSpeed(-0.5));
 	CDR_topMiddleBase.WhileHeld(new ClimbHookSpeed(0.5));
 	CDR_bottomRightBase.WhenPressed(new IntakeActuate(false));
-	CDR_topRightBase.WhenPressed(new IntakeActuate(true));}
+	CDR_joystickPOV.WhileHeld(new IntakeManualSpeed());
 
 double OI::GetDriveMove() {
 	//get forward/backwards values, invert if inverting driving
@@ -71,4 +70,10 @@ bool OI::InvertDriving() {
 		return false;
 	}
 }
-
+bool OI::POVForward() {
+	if((coDriverController.GetPOV(3) >= 270) || (coDriverController.GetPOV(3) <= 90)) {
+		return true;
+	}else{
+		return false;
+	}
+}
