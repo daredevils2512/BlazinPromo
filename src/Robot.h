@@ -14,7 +14,8 @@
 
 #include "Commands/_CMG_AutonomousWithShooting.h"
 #include "Commands/_CMG_AutonomousDriveForward.h"
-#include "Commands/_CMG_AutonomousDoNothing.h"#include "Subsystems/CompressorSubsystem.h"
+#include "Commands/_CMG_AutonomousDoNothing.h"
+#include "Subsystems/CompressorSubsystem.h"
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "RobotMap.h"

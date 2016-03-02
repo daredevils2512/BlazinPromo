@@ -19,5 +19,5 @@ _CMG_AutonomousDriveForward::_CMG_AutonomousDriveForward()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new AutonDrive(14.0, 0.8, 0.0, true));
+	AddSequential(new AutonDrive(14.0, -0.8, 0.0, true));
 }

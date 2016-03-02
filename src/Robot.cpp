@@ -60,7 +60,8 @@ void Robot::DisabledPeriodic() {
 	Scheduler::GetInstance()->Run();
 }
 
-void Robot::AutonomousInit() {	//start autonomous	autonomousCommand.reset((Command *) chooser->GetSelected());
+void Robot::AutonomousInit() {	//start autonomous
+	autonomousCommand.reset((Command *) chooser->GetSelected());
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();	//change camera settings to dark for autonomous vision tracking
 	Robot::visionTracking->cameraAuton();

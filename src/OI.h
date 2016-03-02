@@ -10,7 +10,8 @@ private:
 	//declare controllers
 	Joystick driverController{0};
 	Joystick coDriverController{1};
-	//driver controls	TriggerButton DRC_rightTrigger{&driverController, 3, 0.8};
+	//driver controls
+	TriggerButton DRC_rightTrigger{&driverController, 3, 0.8};
 	TriggerButton DRC_leftTrigger{&driverController, 2, 0.8};
 	JoystickButton DRC_rightBumper{&driverController, 6};
 	JoystickButton DRC_leftBumper{&driverController, 5};
