@@ -36,14 +36,18 @@ void Shooter::InitDefaultCommand() {
 }
 
 void Shooter::SetShooterSpeed(double speed) {
+	//sets shooter motor to opposite of speed specified, because motor is wired in reverse
+	//on robot
 	motor->Set(-speed);
 }
 
 void Shooter::SetShooterDirection(DoubleSolenoid::Value dir) {
+	//actuates shooter up and down depending on what is specified
 	solenoid->Set(dir);
 }
 
 bool Shooter::GetPhotoeye() {
+	//gets photoeye value checking to see if a boulder is in the shooter
 	return photoeye->Get();
 }
 

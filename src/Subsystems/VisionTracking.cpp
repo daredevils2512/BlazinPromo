@@ -36,9 +36,12 @@ void VisionTracking::InitDefaultCommand() {
 }
 
 Nullable<double> VisionTracking::GetTargetX() {
+	//create vector array of center x coordinates of all vision targets detected
 	std::vector<double> xCoor = table->GetNumberArray("centerX", llvm::ArrayRef<double>());
 	SmartDashboard::PutNumber("Target data length", xCoor.size());
+	//chooses target that is most to the left
 	auto lowestTarget = std::min_element(xCoor.begin(), xCoor.end());
+	//checks if any targets are detected
 	if(xCoor.size() == 1) {
 		return Nullable<double>(*lowestTarget);
 	}else{
@@ -47,11 +50,14 @@ Nullable<double> VisionTracking::GetTargetX() {
 }
 
 void VisionTracking::cameraAuton() {
+	//sets camera settings for autonomous
+	//filters out a lot of light to make vision tracking easier
 	camera->WriteBrightness(10);
 	camera->WriteColorLevel(30);
 }
 
 void VisionTracking::cameraTeleop() {
+	//sets camera settings for teleop, so drivers can see better
 	camera->WriteBrightness(50);
 	camera->WriteColorLevel(50);
 }

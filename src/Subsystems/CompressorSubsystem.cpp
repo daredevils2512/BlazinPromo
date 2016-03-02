@@ -18,13 +18,16 @@ void CompressorSubsystem::InitDefaultCommand()
 // here. Call these from Commands.
 
 void CompressorSubsystem::On() {
+	//turns compressor on
 	spike->Set(Relay::kForward);
 }
 
 void CompressorSubsystem::Off() {
+	//turns compressor off
 	spike->Set(Relay::kOff);
 }
 
 bool CompressorSubsystem::Pressurized() {
+	//gets sensor data specifying if air tanks are filled or not
 	return pressureSwitch->Get();
 }

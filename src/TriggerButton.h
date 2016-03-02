@@ -14,9 +14,9 @@
 class TriggerButton : public Button
 {
 private:
-	Joystick* stick;
-	int axis;
-	float threshold;
+	Joystick* stick; // controller
+	int axis; // axis number of trigger
+	float threshold; // float value between true and false
 public:
 	TriggerButton(Joystick *joystick, int rawAxis, float pressThreshold):
 		stick(joystick), axis(rawAxis), threshold(pressThreshold){}

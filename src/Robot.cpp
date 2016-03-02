@@ -50,6 +50,7 @@ void Robot::RobotInit() {
  * You can use it to reset subsystems before shutting down.
  */
 void Robot::DisabledInit(){
+	//change camera settings to dark for autonomous vision tracking
 	Robot::visionTracking->cameraAuton();
 }
 
@@ -58,9 +59,12 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
+	//start autonomous
 	if (autonomousCommandGroup.get() != nullptr)
 		autonomousCommandGroup->Start();
+	//change camera settings to dark for autonomous vision tracking
 	Robot::visionTracking->cameraAuton();
+	//resets drivetrain encoders
 	Robot::drivetrain->ResetEncoders();
 }
 
@@ -75,11 +79,13 @@ void Robot::TeleopInit() {
 	// these lines or comment it out.
 	if (autonomousCommandGroup.get() != nullptr)
 		autonomousCommandGroup->Cancel();
+	//set camera settings to regular for teleop
 	Robot::visionTracking->cameraTeleop();
 }
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+	//print encoders and photoeye to smartdashboard
 	SmartDashboard::PutNumber("climber encoder", RobotMap::climberHookEncoder->GetRaw());
 	SmartDashboard::PutNumber("left encoder", RobotMap::drivetrainLeftEncoder->GetDistance());
 	SmartDashboard::PutNumber("right encoder", RobotMap::drivetrainRightEncoder->GetDistance());
