@@ -10,13 +10,14 @@
 #include "Commands/ClimbHookSpeed.h"
 #include "Commands/ShooterManualSpeed.h"
 #include "Commands/IntakeManualSpeed.h"
-OI::OI()
+#include "Commands/DrivetrainTenPercent.h"OI::OI()
 {
 	// Process operator interface input here.
 	DRC_rightTrigger.WhenPressed(new _CMG_IntakeBall()); //intake ball
 	DRC_rightBumper.WhenPressed(new IntakeActuate(true)); //intake up
 	DRC_leftBumper.WhenPressed(new IntakeActuate(false)); //intake down
 	DRC_a_Button.WhenPressed(new IntakeSpeed(0.0)); //stop intake
+	DRC_b_Button.WhileHeld(new DrivetrainTenPercent());
 
 	CDR_trigger.WhenPressed(new _CMG_ShootBall());
 	CDR_sideJoystickButton.WhenPressed(new _CMG_ShooterCharge());
