@@ -8,6 +8,7 @@
 #include "Commands/ShooterActuate.h"
 #include "Commands/ShooterSpeed.h"
 #include "Commands/ClimbHookSpeed.h"
+#include "Commands/ShooterManualSpeed.h"
 
 OI::OI()
 {
@@ -17,21 +18,20 @@ OI::OI()
 	DRC_leftBumper.WhenPressed(new IntakeActuate(false)); //intake down
 	DRC_a_Button.WhenPressed(new IntakeSpeed(0.0)); //stop intake
 
-	CDR_trigger.WhenPressed(new _CMG_ShootBall()); // shoot ball
-	CDR_sideJoystickButton.WhenPressed(new _CMG_ShooterCharge()); //charge shooter
-	CDR_bottomLeftJoystick.WhileHeld(new ShooterSpeed(0.0, false)); //stop shooter
-	CDR_topLeftJoystick.WhileHeld(new ShooterSpeed(GetThrottle(), false)); //set shooter based on throttle value
-	CDR_bottomRightJoystick.WhenPressed(new ShooterActuate(false)); //shooter down
-	CDR_topRightJoystick.WhenPressed(new ShooterActuate(true)); //shooter up
-	CDR_bottomLeftBase.WhileHeld(new ClimbWinchSpeed(-1.0)); //winches down
-	CDR_bottomLeftBase.WhenReleased(new ClimbWinchSpeed(0.0)); //stop winches
-	CDR_topLeftBase.WhileHeld(new ClimbWinchSpeed(1.0)); //winches up
-	CDR_topLeftBase.WhenReleased(new ClimbWinchSpeed(0.0)); //stop winches
-	CDR_bottomMiddleBase.WhileHeld(new ClimbHookSpeed(-0.5)); //hook down
-	CDR_topMiddleBase.WhileHeld(new ClimbHookSpeed(0.5)); //hook up
-	CDR_bottomRightBase.WhenPressed(new IntakeActuate(false)); //intake down
-	CDR_topRightBase.WhenPressed(new IntakeActuate(true)); //intake up
-}
+	CDR_trigger.WhenPressed(new _CMG_ShootBall());
+	CDR_sideJoystickButton.WhenPressed(new _CMG_ShooterCharge());
+	CDR_bottomLeftJoystick.WhileHeld(new ShooterSpeed(0.0, false));
+	CDR_topLeftJoystick.WhileHeld(new ShooterManualSpeed());
+	CDR_bottomRightJoystick.WhenPressed(new ShooterActuate(false));
+	CDR_topRightJoystick.WhenPressed(new ShooterActuate(true));
+	CDR_bottomLeftBase.WhileHeld(new ClimbWinchSpeed(-1.0));
+	CDR_bottomLeftBase.WhenReleased(new ClimbWinchSpeed(0.0));
+	CDR_topLeftBase.WhileHeld(new ClimbWinchSpeed(1.0));
+	CDR_topLeftBase.WhenReleased(new ClimbWinchSpeed(0.0));
+	CDR_bottomMiddleBase.WhileHeld(new ClimbHookSpeed(-0.5));
+	CDR_topMiddleBase.WhileHeld(new ClimbHookSpeed(0.5));
+	CDR_bottomRightBase.WhenPressed(new IntakeActuate(false));
+	CDR_topRightBase.WhenPressed(new IntakeActuate(true));}
 
 double OI::GetDriveMove() {
 	//get forward/backwards values, invert if inverting driving
