@@ -76,7 +76,7 @@ bool OI::InvertDriving() {
 	}
 }
 bool OI::POVForward() {
-	if((coDriverController.GetPOV(3) >= 270) || (coDriverController.GetPOV(3) <= 90)) {
+	if((coDriverController.GetPOV() >= 270) || (coDriverController.GetPOV() <= 90)) {
 		return true;
 	}else{
 		return false;
