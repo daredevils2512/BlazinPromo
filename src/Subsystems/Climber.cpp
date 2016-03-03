@@ -37,10 +37,13 @@ void Climber::InitDefaultCommand() {
 }
 
 void Climber::ActivateHook(double speed) {
+	//sets motor controlling scissors and hook to specified speed
 	hookMotor->Set(speed);
 }
 
 void Climber::ActivateWinches(double speed) {
+	//sets one winch motor to the speed specified, and the other to the opposite speed
+	//because one of the motors is backwards on the robot
 	leftWinchMotor->Set(-speed);
 	rightWinchMotor->Set(speed);
 }

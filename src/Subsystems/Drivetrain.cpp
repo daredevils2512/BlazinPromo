@@ -46,19 +46,24 @@ void Drivetrain::InitDefaultCommand() {
 // here. Call these from Commands.
 
 void Drivetrain::DriveRobot(double move, double turn) {
+	//drives robot in arcade mode using specified values
 	chassis->ArcadeDrive(move, turn, false);
 }
 
 void Drivetrain::AutonTankDrive(double left, double right) {
+	//drives robot in tank mode using specified values
 	chassis->TankDrive(left, right);
 }
 
 void Drivetrain::ResetEncoders() {
+	//resets encoders on drivetrain
 	leftEncoder->Reset();
 	rightEncoder->Reset();
 }
 
 bool Drivetrain::CheckDistance(double distance) {
+	//checks to see if the average encoder values have reached the desired distance
+	//used for autonomous
 	double leftDistance = fabs(leftEncoder->GetDistance());
 	double rightDistance = fabs(rightEncoder->GetDistance());
 	// check if one encoder is lagging behind or cut out

@@ -21,6 +21,7 @@
 //const int RANGE_FINDER_MODULE = 1;
 class RobotMap {
 public:
+	//declare all talons, encoders, solenoids, etc.
 	static std::shared_ptr<CANTalon> drivetrainFrontLeftMotor;
 	static std::shared_ptr<CANTalon> drivetrainRearLeftMotor;
 	static std::shared_ptr<CANTalon> drivetrainFrontRightMotor;
@@ -37,6 +38,8 @@ public:
 	static std::shared_ptr<CANTalon> climberLeftWinchMotor;
 	static std::shared_ptr<CANTalon> climberRightWinchMotor;
 	static std::shared_ptr<Encoder> climberHookEncoder;
+	static std::shared_ptr<Relay> compressorSpike;
+	static std::shared_ptr<DigitalInput> compressorPressureSwitch;
 
 	static void init();
 };

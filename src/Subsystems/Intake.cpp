@@ -35,10 +35,12 @@ void Intake::InitDefaultCommand() {
 }
 
 void Intake::SetIntakeSpeed(double speed) {
+	//sets intake motor to speed specified
 	motor->Set(speed);
 }
 
 void Intake::SetIntakeDirection(DoubleSolenoid::Value dir) {
+	//actuates intake up or down depending on what is specified
 	solenoid->Set(dir);
 }
 
