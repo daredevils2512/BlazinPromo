@@ -45,10 +45,10 @@ _CMG_AutonomousWithShooting::_CMG_AutonomousWithShooting(bool shooting) {
         AddSequential(new AutonDrive(6.0, -0.8, 0.0, true));
         AddSequential(new PauseCommand(0.2));
         AddSequential(new AutonDrive(2.6, 0.0, 0.8, true));
-        AddSequential(new AutonDrive(6.25, 0.8, 0.0, true));
+        AddSequential(new AutonDrive(6.0, 0.8, 0.0, true));
         if(shooting) {
-			AddSequential(new _CMG_ShooterCharge());
-			AddSequential(new WaitCommand(1.0));
+			AddParallel(new _CMG_ShooterCharge());
+			AddSequential(new PauseCommand(4.0));
 			AddSequential(new _CMG_ShootBall());
         }
 }

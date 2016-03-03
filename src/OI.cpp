@@ -26,9 +26,9 @@ OI::OI()
 	CDR_topLeftJoystick.WhileHeld(new ShooterManualSpeed());
 	CDR_bottomRightJoystick.WhenPressed(new ShooterActuate(false));
 	CDR_topRightJoystick.WhenPressed(new ShooterActuate(true));
-	CDR_bottomLeftBase.WhileHeld(new ClimbWinchSpeed(-1.0));
+	CDR_bottomLeftBase.WhileHeld(new ClimbWinchSpeed(-1.0)); // rope in/robot up
 	CDR_bottomLeftBase.WhenReleased(new ClimbWinchSpeed(0.0));
-	CDR_topLeftBase.WhileHeld(new ClimbWinchSpeed(1.0));
+	CDR_topLeftBase.WhileHeld(new ClimbWinchSpeed(1.0)); // rope out/robot down
 	CDR_topLeftBase.WhenReleased(new ClimbWinchSpeed(0.0));
 	CDR_bottomMiddleBase.WhileHeld(new ClimbHookSpeed(-0.7));
 	CDR_topMiddleBase.WhileHeld(new ClimbHookSpeed(0.7));
@@ -81,4 +81,8 @@ bool OI::POVForward() {
 	}else{
 		return false;
 	}
+}
+
+int OI::GetJoystickPOV() {
+	return coDriverController.GetPOV();
 }

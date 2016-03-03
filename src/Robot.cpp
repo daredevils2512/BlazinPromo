@@ -92,6 +92,7 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("left encoder", RobotMap::drivetrainLeftEncoder->GetDistance());
 	SmartDashboard::PutNumber("right encoder", RobotMap::drivetrainRightEncoder->GetDistance());
 	SmartDashboard::PutBoolean("Ball in", RobotMap::shooterPhotoeye->Get());
+	SmartDashboard::PutNumber("Joystick POV", Robot::oi->GetJoystickPOV());
 }
 
 void Robot::TestPeriodic() {
