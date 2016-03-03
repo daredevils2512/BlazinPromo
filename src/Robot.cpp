@@ -44,6 +44,7 @@ void Robot::RobotInit() {
 	chooser->AddObject("Auto Drive into Courtyard", new _CMG_AutonomousDriveForward());
 	chooser->AddObject("Auto Low Bar No Shooting", new _CMG_AutonomousWithShooting(false));
 	chooser->AddObject("Auto Low Bar with Shooting", new _CMG_AutonomousWithShooting(true));
+	SmartDashboard::PutData("Autonomous Modes", chooser.get());
 	// instantiate the command used for the autonomous period
   }
 
