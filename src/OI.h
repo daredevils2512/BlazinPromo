@@ -33,7 +33,7 @@ private:
 	JoystickButton CDR_topMiddleBase{&coDriverController, 10};
 	JoystickButton CDR_bottomRightBase{&coDriverController, 11};
 	JoystickButton CDR_topRightBase{&coDriverController, 12};
-	POVButton CDR_joystickPOV{&coDriverController, 3};
+	POVButton CDR_joystickPOV{&coDriverController, 0};
 
 public:
 	OI();

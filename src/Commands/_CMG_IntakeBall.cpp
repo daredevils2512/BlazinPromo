@@ -38,8 +38,8 @@ _CMG_IntakeBall::_CMG_IntakeBall() {
     // a CommandGroup containing them would require both the chassis and the
     // arm.
 		AddParallel(new IntakeActuate(false));
-        AddParallel(new ShooterSpeed(0.4, false));
         AddParallel(new ShooterActuate(true));
+        AddParallel(new ShooterSpeed(0.6, false));
         AddSequential(new IntakeSpeed(0.9));
         AddParallel(new ShooterSpeed(0.0, false));
         AddSequential(new ShooterActuate(false));

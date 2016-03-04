@@ -34,7 +34,8 @@ OI::OI()
 	CDR_topMiddleBase.WhileHeld(new ClimbHookSpeed(0.7));
 	CDR_bottomRightBase.WhenPressed(new IntakeActuate(false));
 	CDR_topRightBase.WhenPressed(new IntakeActuate(true));
-	CDR_joystickPOV.WhileHeld(new IntakeManualSpeed());
+	CDR_joystickPOV.WhenPressed(new IntakeManualSpeed());
+	CDR_joystickPOV.WhenReleased(new IntakeSpeed(0.0));
 }
 
 double OI::GetDriveMove() {

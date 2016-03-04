@@ -59,6 +59,7 @@ void Robot::DisabledInit(){
 
 void Robot::DisabledPeriodic() {
 	Scheduler::GetInstance()->Run();
+	SmartDashboard::PutBoolean("Ball in", RobotMap::shooterPhotoeye->Get());
 }
 
 void Robot::AutonomousInit() {	//start autonomous
@@ -93,6 +94,7 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("right encoder", RobotMap::drivetrainRightEncoder->GetDistance());
 	SmartDashboard::PutBoolean("Ball in", RobotMap::shooterPhotoeye->Get());
 	SmartDashboard::PutNumber("Joystick POV", Robot::oi->GetJoystickPOV());
+	SmartDashboard::PutBoolean("POV forward", Robot::oi->POVForward());
 }
 
 void Robot::TestPeriodic() {
