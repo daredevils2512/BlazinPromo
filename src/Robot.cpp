@@ -60,10 +60,20 @@ void Robot::DisabledInit(){
 void Robot::DisabledPeriodic() {
 	Scheduler::GetInstance()->Run();
 	SmartDashboard::PutBoolean("Ball in", RobotMap::shooterPhotoeye->Get());
+	if(Robot::oi->GetThrottle() > 0.0) {
+		useChooser = true;
+	}else{
+		useChooser = false;
+	}
+	SmartDashboard::PutBoolean("Using Chooser", useChooser);
 }
 
 void Robot::AutonomousInit() {	//start autonomous
-	autonomousCommand.reset((Command *) chooser->GetSelected());
+	if(useChooser) {
+		autonomousCommand.reset((Command *) chooser->GetSelected());
+	}else{
+		autonomousCommand.reset(new _CMG_AutonomousWithShooting(true));
+	}
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();	//change camera settings to dark for autonomous vision tracking
 	Robot::visionTracking->cameraAuton();
