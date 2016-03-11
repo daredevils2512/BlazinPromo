@@ -30,8 +30,8 @@ OI::OI()
 	CDR_bottomLeftBase.WhenReleased(new ClimbWinchSpeed(0.0));
 	CDR_topLeftBase.WhileHeld(new ClimbWinchSpeed(1.0)); // rope out/robot down
 	CDR_topLeftBase.WhenReleased(new ClimbWinchSpeed(0.0));
-	CDR_bottomMiddleBase.WhileHeld(new ClimbHookSpeed(-0.7));
-	CDR_topMiddleBase.WhileHeld(new ClimbHookSpeed(0.7));
+	CDR_bottomMiddleBase.WhileHeld(new ClimbHookSpeed(-0.9)); //hook down
+	CDR_topMiddleBase.WhileHeld(new ClimbHookSpeed(0.7)); //hook up
 	CDR_bottomRightBase.WhenPressed(new IntakeActuate(false));
 	CDR_topRightBase.WhenPressed(new IntakeActuate(true));
 	CDR_joystickPOV.WhenPressed(new IntakeManualSpeed());

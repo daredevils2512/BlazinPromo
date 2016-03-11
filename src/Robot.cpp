@@ -60,7 +60,7 @@ void Robot::DisabledInit(){
 void Robot::DisabledPeriodic() {
 	Scheduler::GetInstance()->Run();
 	SmartDashboard::PutBoolean("Ball in", RobotMap::shooterPhotoeye->Get());
-	if(Robot::oi->GetThrottle() > 0.0) {
+	if(Robot::oi->GetThrottle() < 0.0) {
 		useChooser = true;
 	}else{
 		useChooser = false;
