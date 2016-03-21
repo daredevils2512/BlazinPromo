@@ -62,6 +62,16 @@ void VisionTracking::cameraTeleop() {
 	camera->WriteColorLevel(50);
 }
 
+void VisionTracking::shooterCamEnabled(bool is) {
+	//disables shooter camera
+	if(is){
+		USBcamera->StopCapture();
+		camera->WriteMaxFPS(20);
+	} else {
+		camera->WriteMaxFPS(0);
+		USBcamera->StartCapture();
+	}
+}
 
 
 // Put methods for controlling this subsystem
