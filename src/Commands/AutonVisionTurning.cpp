@@ -4,7 +4,7 @@ AutonVisionTurning::AutonVisionTurning()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	SetTimeout(4.0);
+	SetTimeout(0.2);
 }
 
 // Called just before this Command runs the first time
@@ -22,6 +22,8 @@ void AutonVisionTurning::Execute()
 			Robot::drivetrain->AutonTankDrive(0.8, -0.8);
 		}else if(target.GetValue() < LOWER_LIMIT) {
 			Robot::drivetrain->AutonTankDrive(-0.8, 0.8);
+		}else{
+			onTarget = true;
 		}
 	}
 }
@@ -29,10 +31,10 @@ void AutonVisionTurning::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool AutonVisionTurning::IsFinished()
 {
-	if((target.HasValue() == false) || ((target.GetValue() > LOWER_LIMIT) && (target.GetValue() < UPPER_LIMIT)) || (IsTimedOut())) {
+	if(onTarget) {
 		return true;
 	}else{
-		return false;
+		return IsTimedOut();
 	}
 }
 

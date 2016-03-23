@@ -20,6 +20,7 @@ private:
 	Nullable<double> target;
 	static const int UPPER_LIMIT = 136;
 	static const int LOWER_LIMIT = 130;
+	bool onTarget = false;
 };
 
 #endif
