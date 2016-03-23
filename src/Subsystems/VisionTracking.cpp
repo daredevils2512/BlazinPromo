@@ -72,6 +72,11 @@ void VisionTracking::ToggleCamera(activeCam active) {
 	}
 }
 
+void VisionTracking::usbCamSettings() {
+	USBcamera->SetFPS(20);
+	USBcamera->SetSize(160, 120);
+}
+
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
