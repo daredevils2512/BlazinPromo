@@ -4,7 +4,7 @@ AutonVisionTurning::AutonVisionTurning()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	SetTimeout(0.5);
+	SetTimeout(0.2);
 }
 
 // Called just before this Command runs the first time
