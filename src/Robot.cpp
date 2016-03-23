@@ -84,9 +84,9 @@ void Robot::AutonomousInit() {	//start autonomous
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
 	if (Robot::shooter->GetPhotoeye()) {
-		Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::intakeEnable);
-	} else {
 		Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::shooterEnable);
+	} else {
+		Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::intakeEnable);
 	}
 }
 
@@ -111,9 +111,9 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("Joystick POV", Robot::oi->GetJoystickPOV());
 	SmartDashboard::PutBoolean("POV forward", Robot::oi->POVForward());
 	if (Robot::shooter->GetPhotoeye()) {
-			Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::intakeEnable);
-		} else {
 			Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::shooterEnable);
+		} else {
+			Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::intakeEnable);
 		}
 }
 
