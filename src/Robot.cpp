@@ -102,6 +102,7 @@ void Robot::TeleopInit() {
 		autonomousCommand->Cancel();
 	//set camera settings to regular for teleop
 	Robot::visionTracking->cameraTeleop();
+	Robot::visionTracking->saveAxisImage();
 }
 
 void Robot::TeleopPeriodic() {

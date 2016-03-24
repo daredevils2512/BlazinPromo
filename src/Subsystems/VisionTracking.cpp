@@ -78,6 +78,11 @@ void VisionTracking::usbCamSettings() {
 	USBcamera->SetSize(160, 120);
 }
 
+void VisionTracking::saveAxisImage() {
+	image = camera->GetImage();
+	image->Write("CameraImage.bmp");
+}
+
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
