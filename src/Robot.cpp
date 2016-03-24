@@ -57,6 +57,7 @@ void Robot::RobotInit() {
 void Robot::DisabledInit(){
 	//change camera settings to dark for autonomous vision tracking
 	Robot::visionTracking->cameraAuton();
+	//Robot::visionTracking->startUSBCamera();
 }
 
 void Robot::DisabledPeriodic() {
@@ -85,11 +86,11 @@ void Robot::AutonomousInit() {	//start autonomous
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
-	if (Robot::shooter->GetPhotoeye()) {
-		Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::shooterEnable);
-	} else {
-		Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::intakeEnable);
-	}
+//	if (Robot::shooter->GetPhotoeye()) {
+//		Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::shooterEnable);
+//	} else {
+//		Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::intakeEnable);
+//	}
 }
 
 void Robot::TeleopInit() {
@@ -114,10 +115,10 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("Joystick POV", Robot::oi->GetJoystickPOV());
 	SmartDashboard::PutBoolean("POV forward", Robot::oi->POVForward());
 	if (Robot::shooter->GetPhotoeye()) {
-			Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::shooterEnable);
-		} else {
-			Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::intakeEnable);
-		}
+		Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::shooterEnable);
+	} else {
+		Robot::visionTracking->ToggleCamera(Robot::visionTracking->activeCam::intakeEnable);
+	}
 }
 
 void Robot::TestPeriodic() {
