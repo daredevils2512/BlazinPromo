@@ -72,12 +72,6 @@ void VisionTracking::ToggleCamera(activeCam active) {
 	}
 }
 
-void VisionTracking::usbCamSettings() {
-	//sets usb camera settings to minimal
-	USBcamera->SetFPS(20);
-	USBcamera->SetSize(160, 120);
-}
-
 void VisionTracking::saveAxisImage() {
 	image = camera->GetImage();
 	image->Write("CameraImage.bmp");

@@ -57,7 +57,6 @@ void Robot::RobotInit() {
 void Robot::DisabledInit(){
 	//change camera settings to dark for autonomous vision tracking
 	Robot::visionTracking->cameraAuton();
-	Robot::visionTracking->usbCamSettings();
 }
 
 void Robot::DisabledPeriodic() {
