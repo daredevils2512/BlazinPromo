@@ -47,7 +47,6 @@ public:
     static std::shared_ptr<CompressorSubsystem> compressor;
 
     //static std::shared_ptr<Compressor> otherCompressor;
-    static std::shared_ptr<USBCamera> usbCamera;
 
 	virtual void RobotInit();
 	virtual void DisabledInit();
