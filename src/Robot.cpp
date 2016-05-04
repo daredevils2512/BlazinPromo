@@ -75,6 +75,7 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {	//start autonomous
+	Robot::drivetrain->SetAutonomous(true);
 	if(useChooser) {
 		autonomousCommand.reset((Command *) chooser->GetSelected());
 	}else{
@@ -103,6 +104,7 @@ void Robot::TeleopInit() {
 	// these lines or comment it out.
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
+	Robot::drivetrain->SetAutonomous(false);
 	//set camera settings to regular for teleop
 	Robot::visionTracking->cameraTeleop();
 	Robot::visionTracking->saveAxisImage();

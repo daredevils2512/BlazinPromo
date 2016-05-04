@@ -4,38 +4,38 @@ AutonVisionTurning::AutonVisionTurning()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	SetTimeout(0.2);
+	Requires(Robot::drivetrain.get());
+	SetTimeout(0.5);
 }
 
 // Called just before this Command runs the first time
 void AutonVisionTurning::Initialize()
 {
+	target = Robot::visionTracking->GetTargetX();
+	if(target.HasValue()) {
+		if(target.GetValue() > UPPER_LIMIT) {
+			direction = 1;
+		}else if(target.GetValue() < LOWER_LIMIT) {
+			direction = 2;
+		}
+	}
 
 }
 
 // Called repeatedly when this Command is scheduled to run
 void AutonVisionTurning::Execute()
 {
-	target = Robot::visionTracking->GetTargetX();
-	if(target.HasValue()) {
-		if(target.GetValue() > UPPER_LIMIT) {
-			Robot::drivetrain->AutonTankDrive(0.8, -0.8);
-		}else if(target.GetValue() < LOWER_LIMIT) {
-			Robot::drivetrain->AutonTankDrive(-0.8, 0.8);
-		}else{
-			onTarget = true;
-		}
+	if(direction == 1) {
+		Robot::drivetrain->AutonTankDrive(0.5, -0.5);
+	}else if(direction == 2) {
+		Robot::drivetrain->AutonTankDrive(-0.5, 0.5);
 	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutonVisionTurning::IsFinished()
 {
-	if(onTarget) {
-		return true;
-	}else{
-		return IsTimedOut();
-	}
+	return IsTimedOut();
 }
 
 // Called once after isFinished returns true
