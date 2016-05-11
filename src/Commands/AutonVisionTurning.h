@@ -9,7 +9,7 @@
 class AutonVisionTurning: public CommandBase
 {
 public:
-	AutonVisionTurning();
+	AutonVisionTurning(bool first);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -18,8 +18,8 @@ public:
 
 private:
 	Nullable<double> target;
-	static const int UPPER_LIMIT = 143;
-	static const int LOWER_LIMIT = 123;
+	int UPPER_LIMIT;
+	int LOWER_LIMIT;
 	int direction = 0;
 };
 

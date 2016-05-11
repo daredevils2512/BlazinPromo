@@ -28,32 +28,33 @@ _CMG_AutonomousWithVision::_CMG_AutonomousWithVision(bool shooting)
     AddSequential(new AutonDrive(1.5, -0.8, 0.0, false));
     AddSequential(new AutonDrive(7.0, -0.4, 0.0, false));
     AddSequential(new AutonDrive(6.3, -0.8, 0.0, true));
-    AddSequential(new PauseCommand(0.2));
+    AddSequential(new PauseCommand(0.5));
     AddSequential(new AutonDrive(2.5, 0.0, 0.8, true));
     AddSequential(new PauseCommand(0.2));
     AddSequential(new AutonDrive(1.0, 0.6, 0.0, true));
     //vision tracking
-    AddSequential(new AutonVisionTurning());
+    AddSequential(new AutonVisionTurning(true));
     AddSequential(new PauseCommand(0.2));
-    AddSequential(new AutonVisionTurning());
+    AddSequential(new AutonVisionTurning(true));
     AddSequential(new PauseCommand(0.2));
-    AddSequential(new AutonVisionTurning());
+    AddSequential(new AutonVisionTurning(true));
     AddSequential(new PauseCommand(0.2));
-    AddSequential(new AutonVisionTurning());
+    AddSequential(new AutonVisionTurning(true));
     AddSequential(new PauseCommand(0.2));
     //end of vision tracking
-    AddSequential(new AutonDrive(4.5, 0.8, 0.0, true));
-    AddSequential(new AutonVisionTurning());
+    AddSequential(new AutonDrive(4.25, 0.8, 0.0, true));
+    AddSequential(new PauseCommand(0.5));
+    AddSequential(new AutonVisionTurning(false));
     AddSequential(new PauseCommand(0.2));
-    AddSequential(new AutonVisionTurning());
+    AddSequential(new AutonVisionTurning(false));
     AddSequential(new PauseCommand(0.2));
-    AddSequential(new AutonVisionTurning());
+    AddSequential(new AutonVisionTurning(false));
     AddSequential(new PauseCommand(0.2));
-    AddSequential(new AutonVisionTurning());
+    AddSequential(new AutonVisionTurning(false));
     AddSequential(new PauseCommand(0.2));
     if(shooting) {
 		AddParallel(new _CMG_ShooterCharge());
-		AddSequential(new PauseCommand(4.0));
+		AddSequential(new PauseCommand(3.0));
 		AddSequential(new _CMG_ShootBall());
     }
 }
