@@ -21,7 +21,7 @@ bool TriggerButton::Get(){
 			pressed = true;
 		}
 	}
-	return pressed;
+	return pressed; // return true/false value of trigger
 }
 
 

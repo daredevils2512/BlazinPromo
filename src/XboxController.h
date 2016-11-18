@@ -12,8 +12,10 @@
 #include <Buttons/JoystickButton.h>
 #include "TriggerButton.h"
 
+//class declaration for xbox controller joystick
 class XboxController : public Joystick  {
 private:
+	//declaration of buttons and triggers on the xbox controller
 	JoystickButton aButton{this, 1};
 	JoystickButton bbButton{this, 2};
 	JoystickButton xButton{this, 3};
@@ -29,8 +31,10 @@ private:
 
 
 public:
+	//constructor that takes usb port input
 	XboxController(uint32_t port);
 	virtual ~XboxController();
+	//functions that get values of buttons and triggers on the xbox controller
 	float GetRightStickX() const;
 	float GetRightStickY() const;
 	JoystickButton GetAButton();

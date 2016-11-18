@@ -5,6 +5,8 @@
  *      Author: troym
  */
 
+//this class is utilized to convert the POV hat on a logitech joystick (or any joystick with a
+//POV) from a degree input (0-360) to a boolean input (center == false, anything else == true)
 #ifndef SRC_POVBUTTON_H_
 #define SRC_POVBUTTON_H_
 
@@ -19,8 +21,9 @@ private:
 	int axis;
 
 public:
-	POVButton(Joystick *joystick, int rawAxis) :
+	POVButton(Joystick *joystick, int rawAxis) ://stick port and axis number of the POV
 		stick(joystick), axis(rawAxis) {}
+
 	bool Get();
 };
 

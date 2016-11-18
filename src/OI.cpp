@@ -13,17 +13,17 @@
 #include "Commands/DrivetrainTenPercent.h"
 OI::OI()
 {
-	// Process operator interface input here.
+	// activates commands based on controller inputs
 	DRC_rightTrigger.WhenPressed(new _CMG_IntakeBall()); //intake ball
 	DRC_rightBumper.WhenPressed(new IntakeActuate(true)); //intake up
 	DRC_leftBumper.WhenPressed(new IntakeActuate(false)); //intake down
 	DRC_a_Button.WhenPressed(new IntakeSpeed(0.0)); //stop intake
 	DRC_b_Button.WhileHeld(new DrivetrainTenPercent());
 
-	CDR_trigger.WhenPressed(new _CMG_ShootBall());
-	CDR_sideJoystickButton.WhenPressed(new _CMG_ShooterCharge());
-	CDR_bottomLeftJoystick.WhileHeld(new ShooterSpeed(0.0, false));
-	CDR_topLeftJoystick.WhileHeld(new ShooterManualSpeed());
+	CDR_trigger.WhenPressed(new _CMG_ShootBall());//fire ball
+	CDR_sideJoystickButton.WhenPressed(new _CMG_ShooterCharge());//start revving up shooter
+	CDR_bottomLeftJoystick.WhileHeld(new ShooterSpeed(0.0, false));//stop shooter wheels
+	CDR_topLeftJoystick.WhileHeld(new ShooterManualSpeed());//set shooter speed with throttle
 	CDR_bottomRightJoystick.WhenPressed(new ShooterActuate(false));
 	CDR_topRightJoystick.WhenPressed(new ShooterActuate(true));
 	CDR_bottomLeftBase.WhileHeld(new ClimbWinchSpeed(-1.0)); // rope in/robot up
@@ -37,6 +37,7 @@ OI::OI()
 	CDR_joystickPOV.WhenPressed(new IntakeManualSpeed());
 	CDR_joystickPOV.WhenReleased(new IntakeSpeed(0.0));
 }
+
 
 double OI::GetDriveMove() {
 	//get forward/backwards values, invert if inverting driving
@@ -77,6 +78,7 @@ bool OI::InvertDriving() {
 	}
 }
 bool OI::POVForward() {
+	//detects if the POV hat is pushed forward or not
 	if((coDriverController.GetPOV() >= 270) || (coDriverController.GetPOV() <= 90)) {
 		return true;
 	}else{
@@ -85,5 +87,6 @@ bool OI::POVForward() {
 }
 
 int OI::GetJoystickPOV() {
+	//accesses the POV hat value
 	return coDriverController.GetPOV();
 }

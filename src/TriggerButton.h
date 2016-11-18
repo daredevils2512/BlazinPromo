@@ -11,6 +11,7 @@
 #include <Buttons\Button.h>
 #include <Joystick.h>
 
+//class declaration for converting analog trigger (0.0-1.0 or -1.0-0.0) to boolean input
 class TriggerButton : public Button
 {
 private:

@@ -5,6 +5,7 @@
 #include "TriggerButton.h"
 #include "POVButton.h"
 
+//creates all of the inputs on the controllers
 class OI
 {
 private:
@@ -37,6 +38,7 @@ private:
 
 public:
 	OI();
+	//control related functions
 	double GetDriveMove();
 	double GetDriveTurn();
 	double Desensitize(double value);

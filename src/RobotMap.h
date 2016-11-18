@@ -3,41 +3,36 @@
 
 #include "WPILib.h"
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
- 
-// For example to map the left and right motors, you could define the
-// following variables to use with your drivetrain subsystem.
-//const int LEFTMOTOR = 1;
-//const int RIGHTMOTOR = 2;
-
-// If you are using multiple modules, make sure to define both the port
-// number and the module. For example you with a rangefinder:
-//const int RANGE_FINDER_PORT = 1;
-//const int RANGE_FINDER_MODULE = 1;
 class RobotMap {
 public:
-	//declare all talons, encoders, solenoids, etc.
+	//4 speed controllers for the drivetrain
 	static std::shared_ptr<CANTalon> drivetrainFrontLeftMotor;
 	static std::shared_ptr<CANTalon> drivetrainRearLeftMotor;
 	static std::shared_ptr<CANTalon> drivetrainFrontRightMotor;
 	static std::shared_ptr<CANTalon> drivetrainRearRightMotor;
+	//robot drivetrain
 	static std::shared_ptr<RobotDrive> drivetrainchassis;
+	//encoder inputs on drivetrain to track distance
 	static std::shared_ptr<Encoder> drivetrainLeftEncoder;
 	static std::shared_ptr<Encoder> drivetrainRightEncoder;
+	//pneumatic actuator to raise and lower shooter
 	static std::shared_ptr<DoubleSolenoid> shooterSolenoid;
+	//speed controller to run shooter wheels
 	static std::shared_ptr<CANTalon> shooterMotor;
+	//boolean sensor input that detects if the ball is in the shooter or not
 	static std::shared_ptr<DigitalInput> shooterPhotoeye;
+	//pneumatic actuator to raise and lower the intake
 	static std::shared_ptr<DoubleSolenoid> intakeSolenoid;
+	//speed controler to run intake roller
 	static std::shared_ptr<CANTalon> intakeMotor;
+	//speed controller to run scissor lift for climbing hook
 	static std::shared_ptr<CANTalon> climberHookMotor;
+	//speed controllers to run winches that raise the robot
 	static std::shared_ptr<CANTalon> climberLeftWinchMotor;
 	static std::shared_ptr<CANTalon> climberRightWinchMotor;
+	//encoder input that measures distance the winch runs
 	static std::shared_ptr<Encoder> climberHookEncoder;
+	//compressor switch and sensor to regulate compressor when it is connected
 	static std::shared_ptr<Relay> compressorSpike;
 	static std::shared_ptr<DigitalInput> compressorPressureSwitch;
 
