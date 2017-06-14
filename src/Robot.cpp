@@ -13,74 +13,46 @@
 
 //access pointer objects delcared in Robot.h
 std::shared_ptr<Drivetrain> Robot::drivetrain;
-std::shared_ptr<Shooter> Robot::shooter;
-std::shared_ptr<Intake> Robot::intake;
-std::shared_ptr<Climber> Robot::climber;
-std::shared_ptr<VisionTracking> Robot::visionTracking;
+std::shared_ptr<ShooterTShirt> Robot::shootertshirt;
+std::shared_ptr<ShooterFrisbee> Robot::shooterfrisbee;
 std::unique_ptr<OI> Robot::oi;
-std::shared_ptr<CompressorSubsystem> Robot::compressor;
+
 
 void Robot::RobotInit() {
 	RobotMap::init();
 	//start subsystems
     drivetrain.reset(new Drivetrain());
-    shooter.reset(new Shooter());
-    intake.reset(new Intake());
-    climber.reset(new Climber());
-    visionTracking.reset(new VisionTracking());
-    compressor.reset(new CompressorSubsystem());
+    shootertshirt.reset(new ShooterTShirt());
+    shooterfrisbee.reset(new ShooterFrisbee());
     //starts operator interface
 	oi.reset(new OI());
 
-	//creates a multiple choice chooser on the smartdashboard to select a type of autonomous
-	chooser.reset(new SendableChooser());
-	chooser->AddDefault("Auto Do Nothing", new _CMG_AutonomousDoNothing());
-	chooser->AddObject("Auto Drive into Courtyard", new _CMG_AutonomousDriveForward());
-	chooser->AddObject("Auto Low Bar No Shooting", new _CMG_AutonomousWithShooting(false));
-	chooser->AddObject("Auto Low Bar with Shooting", new _CMG_AutonomousWithShooting(true));
-	chooser->AddObject("Vision Tracking No Shooting", new _CMG_AutonomousWithVision(false));
-	chooser->AddObject("Vision Tracking with Shooting", new _CMG_AutonomousWithVision(true));
-	SmartDashboard::PutData("Autonomous Modes", chooser.get());
 	//instantiate the command used for the autonomous period
   }
 
 void Robot::DisabledInit(){
-	//change camera settings to dark for autonomous vision tracking
-	Robot::visionTracking->cameraAuton();
+
 }
 
 void Robot::DisabledPeriodic() {
-	Scheduler::GetInstance()->Run();
-	//puts signal light on the smartdashboard to tell drivers if the robot has a ball
-	SmartDashboard::PutBoolean("Ball in", RobotMap::shooterPhotoeye->Get());
-	//determines if we want to use the autonomous chooser based on the position of
+	frc::Scheduler::GetInstance()->Run();
 	//the joystick throttle
-	if(Robot::oi->GetThrottle() < 0.0) {
-		useChooser = true;
-	}else{
-		useChooser = false;
-	}
+
 	//puts if we are using the chooser or not on the smartdashboard
-	SmartDashboard::PutBoolean("Using Chooser", useChooser);
+	frc::SmartDashboard::PutBoolean("Using Chooser", useChooser);
 }
 
 void Robot::AutonomousInit() {	//start autonomous
 	Robot::drivetrain->SetAutonomous(true);
-	if(useChooser) {
-		autonomousCommand.reset((Command *) chooser->GetSelected());
-	}else{
-		autonomousCommand.reset(new _CMG_AutonomousWithShooting(true));//default autonomous mode
-	}
+
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
-	//change camera settings to dark for autonomous vision tracking
-	Robot::visionTracking->cameraAuton();
 	//resets drivetrain encoders to zero
 	Robot::drivetrain->ResetEncoders();
 }
 
 void Robot::AutonomousPeriodic() {
-	Scheduler::GetInstance()->Run();
+	frc::Scheduler::GetInstance()->Run();
 }
 
 void Robot::TeleopInit() {
@@ -88,20 +60,14 @@ void Robot::TeleopInit() {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
 	Robot::drivetrain->SetAutonomous(false);
-	//set camera settings to regular for teleop
-	Robot::visionTracking->cameraTeleop();
-	Robot::visionTracking->saveAxisImage();
 }
 
 void Robot::TeleopPeriodic() {
-	Scheduler::GetInstance()->Run();
+	frc::Scheduler::GetInstance()->Run();
 	//print information to smartdashboard
-	SmartDashboard::PutNumber("climber encoder", RobotMap::climberHookEncoder->GetRaw());
-	SmartDashboard::PutNumber("left encoder", RobotMap::drivetrainLeftEncoder->GetDistance());
-	SmartDashboard::PutNumber("right encoder", RobotMap::drivetrainRightEncoder->GetDistance());
-	SmartDashboard::PutBoolean("Ball in", RobotMap::shooterPhotoeye->Get());
-	SmartDashboard::PutNumber("Joystick POV", Robot::oi->GetJoystickPOV());
-	SmartDashboard::PutBoolean("POV forward", Robot::oi->POVForward());
+	frc::SmartDashboard::PutNumber("left encoder", RobotMap::drivetrainLeftEncoder->GetDistance());
+	frc::SmartDashboard::PutNumber("right encoder", RobotMap::drivetrainRightEncoder->GetDistance());
+	frc::SmartDashboard::PutBoolean("nos status" , Robot::oi->DriveNosKick());
 }
 
 void Robot::TestPeriodic() {

@@ -46,6 +46,7 @@ public:
 	bool InvertDriving();
 	bool POVForward();
 	int GetJoystickPOV();
+	bool DriveNosKick();
 };
 
 #endif
