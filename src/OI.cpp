@@ -2,11 +2,17 @@
 #include "RobotMap.h"
 #include "Commands/_CMG_ShootTShirt.h"
 #include "Commands/_CMG_ShootFrisbee.h"
+#include "Commands/ShooterFrisbeeActuate.h"
+#include "Commands/ShooterFrisbeeRunMotor.h"
+#include "Commands/ShooterTShirtActuateSolenoid1.h"
+#include "Commands/ShooterTShirtActuateSolenoid2.h"
+#include "Commands/ShooterTShirtFireValve.h"
 OI::OI()
 {
 	// activates commands based on controller inputs
 	DRC_rightTrigger.WhenPressed(new _CMG_ShootTShirt());
 	DRC_leftTrigger.WhileHeld(new _CMG_ShootFrisbee());
+	DRC_leftTrigger.WhenReleased(new ShooterFrisbeeRunMotor(0.0));
 }
 
 
@@ -63,7 +69,7 @@ int OI::GetJoystickPOV() {
 }
 
 bool OI::DriveNosKick() {
-	if(DRC_rightTrigger.Get()) {
+	if(DRC_rightBumper.Get()) {
 		RobotMap::drivetrainchassis->SetMaxOutput(1.5);
 		return true;
 	}else{

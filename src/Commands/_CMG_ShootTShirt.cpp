@@ -25,9 +25,11 @@ _CMG_ShootTShirt::_CMG_ShootTShirt() {
 	AddSequential (new ShooterTShirtActuateSolenoid1(true));
 	AddSequential (new PauseCommand(0.5));
 	AddSequential (new ShooterTShirtActuateSolenoid2(true));
+	AddSequential (new PauseCommand(0.5));
 	AddSequential (new ShooterTShirtFireValve(true));
 	AddSequential (new PauseCommand(0.25));
 	AddSequential (new ShooterTShirtFireValve(false));
 	AddSequential (new ShooterTShirtActuateSolenoid2(false));
+	AddSequential (new PauseCommand(0.2));
 	AddSequential (new ShooterTShirtActuateSolenoid1(false));
 }
