@@ -22,14 +22,14 @@ _CMG_ShootTShirt::_CMG_ShootTShirt() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential (new ShooterTShirtActuateSolenoid1(true));
-	AddSequential (new PauseCommand(0.5));
-	AddSequential (new ShooterTShirtActuateSolenoid2(true));
-	AddSequential (new PauseCommand(0.5));
+//	AddSequential (new ShooterTShirtActuateSolenoid1(true));
+//	AddSequential (new PauseCommand(0.5));
+//	AddSequential (new ShooterTShirtActuateSolenoid2(true));
+//	AddSequential (new PauseCommand(0.5));
 	AddSequential (new ShooterTShirtFireValve(true));
 	AddSequential (new PauseCommand(0.25));
 	AddSequential (new ShooterTShirtFireValve(false));
-	AddSequential (new ShooterTShirtActuateSolenoid2(false));
-	AddSequential (new PauseCommand(0.2));
-	AddSequential (new ShooterTShirtActuateSolenoid1(false));
+//	AddSequential (new ShooterTShirtActuateSolenoid2(false));
+//	AddSequential (new PauseCommand(0.2));
+//	AddSequential (new ShooterTShirtActuateSolenoid1(false));
 }

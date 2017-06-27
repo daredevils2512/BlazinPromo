@@ -12,7 +12,13 @@ OI::OI()
 	// activates commands based on controller inputs
 	DRC_rightTrigger.WhenPressed(new _CMG_ShootTShirt());
 	DRC_leftTrigger.WhileHeld(new _CMG_ShootFrisbee());
-	DRC_leftTrigger.WhenReleased(new ShooterFrisbeeRunMotor(0.0));
+	DRC_a_Button.WhenPressed(new ShooterTShirtActuateSolenoid1(true));
+	DRC_b_Button.WhenPressed(new ShooterTShirtActuateSolenoid1(false));
+	DRC_x_Button.WhenPressed(new ShooterTShirtActuateSolenoid2(true));
+	DRC_y_Button.WhenPressed(new ShooterTShirtActuateSolenoid2(false));
+	DRC_start_Button.WhileHeld(new ShooterFrisbeeRunMotor(1.0));
+	DRC_start_Button.WhenReleased(new ShooterFrisbeeRunMotor(0.0));
+
 }
 
 

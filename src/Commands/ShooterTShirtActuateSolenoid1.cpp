@@ -16,9 +16,9 @@ void ShooterTShirtActuateSolenoid1::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ShooterTShirtActuateSolenoid1::Execute() {
 	if (m_direction) {
-		Robot::shootertshirt->ActuateSolenoidOne(frc::DoubleSolenoid::kForward);
-	}else{
 		Robot::shootertshirt->ActuateSolenoidOne(frc::DoubleSolenoid::kReverse);
+	}else{
+		Robot::shootertshirt->ActuateSolenoidOne(frc::DoubleSolenoid::kForward);
 	}
 }
 
