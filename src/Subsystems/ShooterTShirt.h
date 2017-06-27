@@ -2,18 +2,14 @@
 #define ShooterTShirt_H
 
 #include <Commands/Subsystem.h>
-#include "CANTalon.h"
+#include "WPILib.h"
 #include "../RobotMap.h"
 
 class ShooterTShirt : public Subsystem {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
-	std::shared_ptr<frc::DoubleSolenoid> shooterSolenoidOne;
-	std::shared_ptr<frc::DoubleSolenoid> shooterSolenoidTwo;
-	std::shared_ptr<frc::Relay> shooterSpike;
-
-
+	std::shared_ptr<frc::DoubleSolenoid> SolenoidOne;
+	std::shared_ptr<frc::DoubleSolenoid> SolenoidTwo;
+	std::shared_ptr<frc::Relay> Spike;
 
 public:
 	ShooterTShirt();
@@ -21,7 +17,10 @@ public:
 	void ActuateSolenoidOne(frc::DoubleSolenoid::Value dir);
 	void ActuateSolenoidTwo(frc::DoubleSolenoid::Value dir);
 	void RelayInfo();
-
+	void ValveOpen();
+	void ValveClose();
+	frc::DoubleSolenoid::Value GetSolenoidOneDirection();
+	frc::DoubleSolenoid::Value GetSolenoidTwoDirection();
 
 };
 

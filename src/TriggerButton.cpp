@@ -1,10 +1,3 @@
- /*
- * TriggerButton.cpp
- *
- *  Created on: Feb 11, 2016
- *      Author: troym
- */
-
 #include "TriggerButton.h"
 
 bool TriggerButton::Get(){

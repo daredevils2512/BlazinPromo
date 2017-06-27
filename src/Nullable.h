@@ -1,10 +1,3 @@
-/*
- * Nullable.h
- *
- *  Created on: Feb 20, 2016
- *      Author: troym
- */
-
 #ifndef SRC_NULLABLE_H_
 #define SRC_NULLABLE_H_
 

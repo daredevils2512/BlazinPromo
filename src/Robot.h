@@ -1,4 +1,3 @@
-
 #ifndef _ROBOT_H
 #define _ROBOT_H
 
@@ -22,6 +21,7 @@ public:
     static std::shared_ptr<Drivetrain> drivetrain;
     static std::shared_ptr<ShooterTShirt> shootertshirt;
     static std::shared_ptr<ShooterFrisbee> shooterfrisbee;
+    static std::shared_ptr<frc::Compressor> compressor;
 
     //declaration of robot class functions
 	virtual void RobotInit();

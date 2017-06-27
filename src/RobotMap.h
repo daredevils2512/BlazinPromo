@@ -13,10 +13,7 @@ public:
 	static std::shared_ptr<CANTalon> drivetrainRearRightMotor;
 	//robot drivetrain
 	static std::shared_ptr<frc::RobotDrive> drivetrainchassis;
-	//encoder inputs on drivetrain to track distance
-	static std::shared_ptr<frc::Encoder> drivetrainLeftEncoder;
-	static std::shared_ptr<frc::Encoder> drivetrainRightEncoder;
-
+	//1 pneumatic actuator to shift gears
 	static std::shared_ptr<frc::DoubleSolenoid> drivetrainShift;
 
 	static std::shared_ptr<frc::DoubleSolenoid> shooterSolenoidOne;

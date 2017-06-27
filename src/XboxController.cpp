@@ -1,10 +1,3 @@
-/*
- * XboxController.cpp
- *
- *  Created on: Feb 23, 2016
- *      Author: Daredevils
- */
-
 #include "XboxController.h"
 
 XboxController::XboxController(uint32_t port) : Joystick(port) {

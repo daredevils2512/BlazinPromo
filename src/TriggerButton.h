@@ -1,9 +1,3 @@
-/* TriggerButton.h
- *
- *  Created on: Feb 11, 2016
- *      Author: troym
- */
-
 #ifndef SRC_TRIGGERBUTTON_H_
 #define SRC_TRIGGERBUTTON_H_
 

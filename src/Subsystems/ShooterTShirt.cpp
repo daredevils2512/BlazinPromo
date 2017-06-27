@@ -2,27 +2,42 @@
 #include "../RobotMap.h"
 
 ShooterTShirt::ShooterTShirt() : Subsystem("ShooterTShirt") {
-	shooterSolenoidOne = RobotMap::shooterSolenoidOne;
-	shooterSolenoidTwo = RobotMap::shooterSolenoidTwo;
-	shooterSpike = RobotMap::shooterSpike;
-
+	SolenoidOne = RobotMap::shooterSolenoidOne;
+	SolenoidTwo = RobotMap::shooterSolenoidTwo;
+	Spike = RobotMap::shooterSpike;
 
 }
 
 void ShooterTShirt::InitDefaultCommand() {
-	// Set the default command for a subsystem here.
-	// SetDefaultCommand(new MySpecialCommand());
+
 }
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
 void ShooterTShirt::ActuateSolenoidOne(frc::DoubleSolenoid::Value dir) {
-	shooterSolenoidOne->Set(dir);
+	//solenoid that pulls bolt back, first part of process
+	SolenoidOne->Set(dir);
 }
 
 void ShooterTShirt::ActuateSolenoidTwo(frc::DoubleSolenoid::Value dir) {
-	shooterSolenoidTwo->Set(dir);
+	//solenoid that rotates chamber, second part of process
+	SolenoidTwo->Set(dir);
 }
-void RelayInfo() {
-	RobotMap::shooterSpike->Get();
+
+void ShooterTShirt::RelayInfo() {
+	Spike->Get();
+}
+
+void ShooterTShirt::ValveOpen() {
+	Spike->Set(frc::Relay::kForward);
+}
+
+void ShooterTShirt::ValveClose() {
+	Spike->Set(frc::Relay::kReverse);
+}
+
+frc::DoubleSolenoid::Value ShooterTShirt::GetSolenoidOneDirection() {
+	return SolenoidOne->Get();
+}
+
+frc::DoubleSolenoid::Value ShooterTShirt::GetSolenoidTwoDirection() {
+	return SolenoidTwo->Get();
 }

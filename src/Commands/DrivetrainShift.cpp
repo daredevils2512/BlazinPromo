@@ -11,7 +11,7 @@ DrivetrainShift::DrivetrainShift(bool direction) {
 void DrivetrainShift::Initialize() {
 	this->SetInterruptible(false);
 	this->SetTimeout(0.02);
-	Robot::drivetrain->DriveRobot(0,0);
+	Robot::drivetrain->DriveRobot(0.0, 0.0);
 }
 
 // Called repeatedly when this Command is scheduled to run

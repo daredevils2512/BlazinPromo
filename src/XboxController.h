@@ -1,10 +1,3 @@
-/*
- * XboxController.h
- *
- *  Created on: Feb 23, 2016
- *      Author: Daredevils
- */
-
 #ifndef SRC_XBOXCONTROLLER_H_
 #define SRC_XBOXCONTROLLER_H_
 
