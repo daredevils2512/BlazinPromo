@@ -21,4 +21,8 @@ _CMG_ShootFrisbee::_CMG_ShootFrisbee() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
+	AddParallel(new ShooterFrisbeeRunMotor(0.8));
+	AddSequential(new PauseCommand(1.0));
+	AddSequential(new ShooterFrisbeeActuate(true));
+
 }
