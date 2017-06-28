@@ -14,7 +14,7 @@ void ShooterTShirtFireValve::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterTShirtFireValve::Execute() {
-	if (Robot::shootertshirt->GetSolenoidTwoDirection() == frc::DoubleSolenoid::kForward) {
+	if (m_active) {
 		Robot::shootertshirt->ValveOpen();
 	}else{
 		Robot::shootertshirt->ValveClose();
